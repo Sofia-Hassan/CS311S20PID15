@@ -44,6 +44,8 @@ def txtfile_to_string(A):
     return C
 
 # main function
+n=int(input("Enter total number of files to be checked "))
+#for 2 files
 A=input("Enter file name. ")
 B=input("Enter second file name. ")
 F1=txtfile_to_string(A)
@@ -56,3 +58,14 @@ for i in A:
     print(i)
 Plagiarism_Percentage(len(i),len(F1))
 Plagiarism_Percentage(len(i),len(F2))
+#for more than 2 files
+for x in range(2,n):
+    C=input("Enter file name with ext .txt ")
+    F=txtfile_to_string(C)
+    r=LCS_length(F,i)
+    print("The longest common sucequence is: ")
+    A=Print_LCS(r,F,len(F),len(i))
+    #print(A)
+    for i in A:
+        print(i)
+    Plagiarism_Percentage(len(i),len(F1))
