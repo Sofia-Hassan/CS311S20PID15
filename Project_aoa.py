@@ -1,13 +1,19 @@
+def Plagiarism_Percentage( input,output):
+    print(input/output *100)
 def Print_LCS(B, X, i, j):
-    if i ==0 or j==0: 
-        return "Empty"
+    A = set()
+    if i ==0 or j==0:
+        A.add("")
+        return A
     if B[i][j]=='/':
-        Print_LCS(B,X,i-1,j-1)
-        print (X[i-1],end="")
+        tmp=Print_LCS(B,X,i-1,j-1)
+        for s in tmp: 
+            A.add(s + X[i - 1])
     elif B[i][j] == '|':
-        Print_LCS(B, X, i - 1, j)
+        A=Print_LCS(B, X, i - 1, j)
     else:
-        Print_LCS(B, X, i, j - 1)
+        A=Print_LCS(B, X, i, j - 1)
+    return A
 def LCS_length(X ,Y):
     m,n=len(X),len(Y)
     B=[["" for i in range(n+1)] for j in range(m+1)]
@@ -23,12 +29,10 @@ def LCS_length(X ,Y):
              else:
                  C[i][j]=C[i][j-1]
                  B[i][j]='-'    
-    return B
-    
+    return B    
 def remove_spaces(A):
     A=A.replace(" ","")
     return A
-
 def remove_sestivity(A):
     A=A.lower()
     B=remove_spaces(A)
@@ -45,7 +49,10 @@ B=input("Enter second file name. ")
 F1=txtfile_to_string(A)
 F2=txtfile_to_string(B)
 r=LCS_length(F1,F2)
-print(len(r),len(r[0]))
 print("The longest common sucequence is: ")
-Print_LCS(r,F1,len(F1),len(F2))
-
+A=Print_LCS(r,F1,len(F1),len(F2))
+#print(A)
+for i in A:
+    print(i)
+Plagiarism_Percentage(len(i),len(F1))
+Plagiarism_Percentage(len(i),len(F2))
