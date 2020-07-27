@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>
+    </title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        #textbox {
+            font-size: 12pt;
+            position: absolute;
+            left: 100px;          
+            height: 400px;
+            width: 540px;
+            border: 3px solid limegreen;
+            padding: 10px;
+        }
+
+        #textbox1 {
+            line-height: 1.5;
+            font-size: 12pt;
+            position: absolute;
+            right:100px;
+            height: 400px;
+            width: 540px;
+            border: 3px solid limegreen;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["myfile"].value;
+            if (x == "") {
+                alert("Some file must be selected");
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1 style="color:limegreen;">
+        Plagiarism Checker
+    </h1>
+
+    <div>
+        
+        <form action="#" method="POST" name="myForm" method="post" required>
+            <input id="textbox" type="text" name="text1"><br>
+            <input id="textbox1" type="text" name="text2"><br>
+            <h2 style="margin-top:400px ;color:limegreen;">File upload</h2>
+            <label for="myfile">Select a files:</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+            <input type="submit" value="Check for plagiarism" name="button">
+        </form>
+    </div>
+</body>
+</html>
