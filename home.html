@@ -9,25 +9,23 @@
         h1 {
             text-align: center;
         }
-        #textbox {
-            font-size: 12pt;
-            position: absolute;
-            left: 100px;          
+        #textbox {          
             height: 400px;
             width: 540px;
             border: 3px solid limegreen;
             padding: 10px;
         }
-
-        #textbox1 {
-            line-height: 1.5;
-            font-size: 12pt;
-            position: absolute;
-            right:100px;
-            height: 400px;
-            width: 540px;
-            border: 3px solid limegreen;
+        #button {
+            background-color:limegreen;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
             padding: 10px;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
         }
     </style>
     <script>
@@ -45,16 +43,18 @@
     <h1 style="color:limegreen;">
         Plagiarism Checker
     </h1>
+    <h3 style="color:darkgrey;">Enter text here or upload file to check for plagiarism</h3>
 
     <div>
         
-        <form action="#" method="POST" name="myForm" method="post" required>
-            <input id="textbox" type="text" name="text1"><br>
-            <input id="textbox1" type="text" name="text2"><br>
-            <h2 style="margin-top:400px ;color:limegreen;">File upload</h2>
-            <label for="myfile">Select a files:</label>
-            <input type="file" id="myfile" name="myfile"><br><br>
-            <input type="submit" value="Check for plagiarism" name="button">
+        <form action="#" method="POST" name="myForm" method="post" enctype=multipart/form-data>
+            <textarea style="margin-left:100px;" id="textbox" name="text1" cols="50" rows="10"></textarea>
+            <textarea id="textbox" name="text2" cols="50" rows="10"></textarea>
+            <h2 style="color:limegreen;">File upload</h2>
+            <label style="margin-left: 100px;" for="myfile">Select files:</label>
+            <input type="file" id="myfile" name="myfile">
+            <input type="file" id="myfile" name="myfile2">
+            <input id="button" type="submit" value="Check for plagiarism" name="button">
         </form>
     </div>
 </body>
