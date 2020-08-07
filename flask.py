@@ -1,3 +1,4 @@
+import os 
 def Plagiarism_Percentage(input,output):
     return( input/output *100)
 def Print_LCS(B, X, i, j):
@@ -51,6 +52,16 @@ from flask import Flask,render_template,request,redirect,url_for,session
 
 app = Flask(__name__)
 
+UPLOAD_FOLDER = 'C:/Users/Usama Hassan/Desktop/dsa lab codes/Project aoa/Project aoa/flask/files'
+ALLOWED_EXTENSIONS = {'txt'}
+
+app = Flask(__name__,static_folder='files')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route("/", methods=["POST","GET"])
 def home():  
     if request.method ==  "POST":
@@ -67,6 +78,30 @@ def home():
         p1=Plagiarism_Percentage(len(i),len(txt1))
         p2=Plagiarism_Percentage(len(i),len(txt2))
         return redirect(url_for("page1",p1=p1,p2=p2,x=x,a=A,b=B))
+ else:
+            file1 = request.files['myfile1']
+            file2 = request.files['myfile2']
+            if 'myfile1' and 'myfile2' not in request.files:
+                return "file not found"
+            
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file1.filename == "" and file2.filename == "":
+                return "file is empty"
+            if file1 and file2 and allowed_file(file1.filename) and allowed_file(file2.filename):
+                filename1 = secure_filename(file1.filename)
+                filename2 = secure_filename(file2.filename)
+                file1.save(os.path.join(app.config['UPLOAD_FOLDER'], filename1))
+                file2.save(os.path.join(app.config['UPLOAD_FOLDER'], filename2))
+                C=txtfile_to_string(filename1)
+                D=txtfile_to_string(filename2)
+                r=LCS_length(C,D)
+                A=Print_LCS(r,C,len(C),len(D))
+                for i in A:
+                    y=i
+                p3=Plagiarism_Percentage(len(i),len(C))
+                p4=Plagiarism_Percentage(len(i),len(D))
+                return redirect(url_for("page2",p3=p3,p4=p4,y=y,c=C,d=D))
     else:
         return render_template("home.html")
     return render_template("home.html")
@@ -75,6 +110,9 @@ def home():
 def page1(x,p1,p2,a,b):
     return render_template("page1.html",txt1=a,txt2=b,sub=x,p1=p1,p2=p2)
 
+@app.route("/page2/<y>/<p3>/<p4>/<c>/<d>")
+def page2(y,p3,p4,c,d):
+    return render_template("page2.html",sub=y,p1=p3,p2=p4,c=c,d=d)
 
 if __name__ ==  "__main__":
     app.run() 
