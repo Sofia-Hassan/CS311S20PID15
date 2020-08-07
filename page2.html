@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>
+    </title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .box {
+            font-size: 12pt;
+            position: absolute;
+            left: 100px;          
+            height: 400px;
+            width: 540px;
+            border: 3px solid limegreen;
+            padding: 10px;
+        }
+
+        .box1 {
+            line-height: 1.5;
+            font-size: 12pt;
+            position: absolute;
+            right:100px;
+            height: 400px;
+            width: 540px;
+            border: 3px solid limegreen;
+            padding: 10px;
+        }
+        mark { 
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+    <script>
+        function highlight() { 
+            var str = element.innerHTML;
+            var sub = elememt.innerHTML;
+            for(i=0;i<sub.length;i++){
+                if (sub[i]==str[i])
+                {
+                    return <mark>str[i]</mark>
+                }
+            }
+        document.getElementById("demo").innerHTML = {txt1},{sub};
+        }
+    </script>
+</head>
+
+<body>
+    <h1 style="color:limegreen;">
+        Plagiarism Checker
+    </h1>
+
+    <div>
+        <p class="box">{{c}}{{sub}}</p>
+        <p class="box1">{{d}}</p>
+        <p style="color:limegreen;">The percentage of plagiarism in file 1 is {{p1}}</h2>
+        <p style="color:limegreen;">The percentage of plagiarism in file 2 is {{p2}}</h2>
+    </div>
+</body>
+</html>
