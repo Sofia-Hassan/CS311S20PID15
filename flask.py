@@ -1,3 +1,4 @@
+#integrated code
 import os 
 def Plagiarism_Percentage(input,output):
     return( input/output *100)
