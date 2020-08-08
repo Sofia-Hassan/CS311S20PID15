@@ -67,18 +67,17 @@ def home():
     if request.method ==  "POST":
         A= request.form["text1"]
         B= request.form["text2"]
-        #file1= request.files["name"]
-        #file2=request.files["name"]
-        txt1=remove_sestivity(A)
-        txt2=remove_sestivity(B)
-        r=LCS_length(txt1,txt2)
-        A=Print_LCS(r,txt1,len(txt1),len(txt2))
-        for i in A:
-            x=i
-        p1=Plagiarism_Percentage(len(i),len(txt1))
-        p2=Plagiarism_Percentage(len(i),len(txt2))
-        return redirect(url_for("page1",p1=p1,p2=p2,x=x,a=A,b=B))
- else:
+        if A!="" and B!="":
+            txt1=remove_sestivity(A)
+            txt2=remove_sestivity(B)
+            r=LCS_length(txt1,txt2)
+            A=Print_LCS(r,txt1,len(txt1),len(txt2))
+            for i in A:
+                x=i
+            p1=Plagiarism_Percentage(len(i),len(txt1))
+            p2=Plagiarism_Percentage(len(i),len(txt2))
+            return redirect(url_for("page1",p1=p1,p2=p2,x=x,a=A,b=B))
+        else:
             file1 = request.files['myfile1']
             file2 = request.files['myfile2']
             if 'myfile1' and 'myfile2' not in request.files:
