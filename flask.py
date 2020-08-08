@@ -101,7 +101,7 @@ def home():
                     y=i
                 p3=Plagiarism_Percentage(len(i),len(C))
                 p4=Plagiarism_Percentage(len(i),len(D))
-                return redirect(url_for("page2",p3=p3,p4=p4,y=y,c=C,d=D))
+                return redirect(url_for("page2",p3=p3,p4=p4,y=y,c=C,d=D)) 
     else:
         return render_template("home.html")
     return render_template("home.html")
