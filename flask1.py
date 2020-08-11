@@ -50,6 +50,7 @@ def txtfile_to_string(A):
 
 
 from flask import Flask,render_template,request,redirect,url_for,session
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
