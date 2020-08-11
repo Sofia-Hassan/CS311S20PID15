@@ -53,7 +53,7 @@ from flask import Flask,render_template,request,redirect,url_for,session
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'C:/Users/Usama Hassan/Desktop/dsa lab codes/Project aoa/Project aoa/flask/files'
+UPLOAD_FOLDER = 'C:/Users/Usama Hassan/Desktop/dsa lab codes/Project aoa/Project aoa/flask'
 ALLOWED_EXTENSIONS = {'txt'}
 
 app = Flask(__name__,static_folder='files')
