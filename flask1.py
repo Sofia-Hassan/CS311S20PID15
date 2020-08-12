@@ -107,9 +107,11 @@ def home():
         return render_template("home.html")
     return render_template("home.html")
 
-@app.route("/page1/<x>/<p1>/<p2>/<a>/<b>")
+@app.route("/page1/<string:x>/<p1>/<p2>/<string:a>/<string:b>")
 def page1(x,p1,p2,a,b):
-    return render_template("page1.html",txt1=a,txt2=b,sub=x,p1=p1,p2=p2)
+    c=len(a)
+    d=len(b)
+    return render_template("page1.html",txt1=a,txt2=b,sub=x,p1=p1,p2=p2,c=c,d=d)
 
 @app.route("/page2/<y>/<p3>/<p4>/<c>/<d>")
 def page2(y,p3,p4,c,d):
