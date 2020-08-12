@@ -53,8 +53,15 @@
     <h1 style="color:limegreen;">
         Plagiarism Checker
     </h1>
-    <p id="sub" type="t2">{{sub}}</p>
-    <p class="box" id="txt" type="t1">{{txt1}}</p>  
+    <div class="box">
+    {% for i  in range(0,c): %}
+        {% if  subb[i] == txt1[i]: %}
+            <p><mark>{{txt1[i]}}</mark></p>
+        {% else %}
+            {{txt1[i]}}
+        {% endif %}        
+    {% endfor %}
+    </div>
     <p class="box1" id="new" type="t3">{{txt2}}}</p>
     <div style="margin-top: 30em;">
         <p >The percentage of plagiarism in text 1 is <p style="color: limegreen;">{{p1}}</p></p>
