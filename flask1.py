@@ -73,8 +73,8 @@ def home():
             txt1=remove_sestivity(A)
             txt2=remove_sestivity(B)
             r=LCS_length(txt1,txt2)
-            A=Print_LCS(r,txt1,len(txt1),len(txt2))
-            for i in A:
+            C=Print_LCS(r,txt1,len(txt1),len(txt2))
+            for i in C:
                 x=i
             p1=Plagiarism_Percentage(len(i),len(txt1))
             p2=Plagiarism_Percentage(len(i),len(txt2))
