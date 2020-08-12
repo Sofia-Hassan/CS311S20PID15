@@ -54,7 +54,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'C:/Users/Usama Hassan/Desktop/dsa lab codes/Project aoa/Project aoa/flask'
+UPLOAD_FOLDER = 'C:/Users/Usama Hassan/Desktop/dsa lab codes/Project aoa/Project aoa/flask/'
 ALLOWED_EXTENSIONS = {'txt'}
 
 app = Flask(__name__,static_folder='files')
