@@ -1,5 +1,6 @@
 #integrated code
-import os 
+import os , sys
+sys.setrecursionlimit(10000)
 def Plagiarism_Percentage(input,output):
     return( input/output *100)
 def Print_LCS(B, X, i, j):
