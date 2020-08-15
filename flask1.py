@@ -116,7 +116,9 @@ def page1(x,p1,p2,a,b):
 
 @app.route("/page2/<y>/<p3>/<p4>/<c>/<d>")
 def page2(y,p3,p4,c,d):
-    return render_template("page2.html",sub=y,p1=p3,p2=p4,c=c,d=d)
+    a=len(c)
+    b=len(d)
+    return render_template("page2.html",sub=y,p1=p3,p2=p4,c=c,d=d,a=a,b=b)
 
 if __name__ ==  "__main__":
     app.run() 
