@@ -17,6 +17,7 @@
             width: 540px;
             border: 3px solid limegreen;
             padding: 10px;
+            overflow: scroll;
         }
 
         .box1 {
@@ -28,35 +29,40 @@
             width: 540px;
             border: 3px solid limegreen;
             padding: 10px;
-        }
-        mark { 
-            background-color: yellow;
-            color: black;
+            overflow: scroll;
         }
     </style>
-    <script>
-        function highlight() { 
-            var str = element.innerHTML;
-            var sub = elememt.innerHTML;
-            for(i=0;i<sub.length;i++){
-                if (sub[i]==str[i])
-                {
-                    return <mark>str[i]</mark>
-                }
-            }
-        document.getElementById("demo").innerHTML = {txt1},{sub};
-        }
-    </script>
 </head>
 
 <body>
     <h1 style="color:limegreen;">
         Plagiarism Checker
     </h1>
+    
+    {% set n=namespace(j=0) %}
+    <p class="box">
+    {% for i  in range(0,a): %}
+        {% if  sub[n.j] == c[i]: %}
+            <mark>{{c[i]}}</mark>
+            {% set n.j= n.j + 1 %}
+        {% elif sub[n.j] != c[i]: %}
+            {{c[i]}}
+        {% endif %}       
+    {% endfor %}
+    </p> 
+    {% set n=namespace(j=0) %}
+    <p class="box1">
+        {% for i  in range(0,b): %}
+            {% if  sub[n.j] == d[i]: %}
+                <mark>{{d[i]}}</mark>
+                {% set n.j= n.j + 1 %}
+            {% elif sub[n.j] != d[i]: %}
+                {{d[i]}}
+            {% endif %}       
+        {% endfor %}
+    </p> 
 
-    <div>
-        <p class="box">{{c}}{{sub}}</p>
-        <p class="box1">{{d}}</p>
+    <div style="margin-top: 30em;">
         <p style="color:limegreen;">The percentage of plagiarism in file 1 is {{p1}}</h2>
         <p style="color:limegreen;">The percentage of plagiarism in file 2 is {{p2}}</h2>
     </div>
