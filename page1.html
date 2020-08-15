@@ -17,6 +17,7 @@
             width: 540px;
             border: 3px solid limegreen;
             padding: 10px;
+            overflow: scroll;
         }
 
         .box1 {
@@ -28,6 +29,7 @@
             width: 540px;
             border: 3px solid limegreen;
             padding: 10px;
+            overflow: scroll;
         }
         .highlight {background-color: #B4D5FF}
         mark { 
@@ -53,16 +55,29 @@
     <h1 style="color:limegreen;">
         Plagiarism Checker
     </h1>
-    <div class="box">
+    
+    {% set n=namespace(j=0) %}
+    <p class="box">
     {% for i  in range(0,c): %}
-        {% if  subb[i] == txt1[i]: %}
-            <p><mark>{{txt1[i]}}</mark></p>
-        {% else %}
+        {% if  sub[n.j] == txt1[i]: %}
+            <mark>{{txt1[i]}}</mark>
+            {% set n.j= n.j + 1 %}
+        {% elif sub[n.j] != txt1[i]: %}
             {{txt1[i]}}
-        {% endif %}        
+        {% endif %}       
     {% endfor %}
-    </div>
-    <p class="box1" id="new" type="t3">{{txt2}}}</p>
+    </p> 
+    {% set n=namespace(j=0) %}
+    <p class="box1">
+        {% for i  in range(0,d): %}
+            {% if  sub[n.j] == txt2[i]: %}
+                <mark>{{txt2[i]}}</mark>
+                {% set n.j= n.j + 1 %}
+            {% elif sub[n.j] != txt2[i]: %}
+                {{txt2[i]}}
+            {% endif %}       
+        {% endfor %}
+    </p>
     <div style="margin-top: 30em;">
         <p >The percentage of plagiarism in text 1 is <p style="color: limegreen;">{{p1}}</p></p>
         <p >The percentage of plagiarism in text 2 is <p style="color: limegreen;">{{p2}}</p></p>
